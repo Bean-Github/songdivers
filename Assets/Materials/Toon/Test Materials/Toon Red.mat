@@ -44,21 +44,23 @@ Material:
     m_Ints: []
     m_Floats:
     - _Base_Brightness: 0
-    - _Full_Dark_Size: 0.1
+    - _Full_Dark_Size: 4.81
     - _MAIN_LIGHT: 1
     - _Max_Brightness: 1
     - _Min_Brightness: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SHADOWS_SOFT: 0
-    - _Shade_Size: 0.49
+    - _Shade_Size: 1.24
     - _Shadow_Intensity: 0.2
     - _Smoothness: 0
     - _Texture: 0
     - _Use_Smoothness: 1
     m_Colors:
-    - _Base_Color: {r: 1, g: 0, b: 0, a: 0}
+    - _Base_Color: {r: 1, g: 0.13396227, b: 0.13396227, a: 0}
     - _Color: {r: 1, g: 0, b: 0, a: 0}
+    - _Ramped_Diffuse_Values: {r: 1, g: 1, b: 1, a: 0}
+    - _Threshold: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5194910013911049163

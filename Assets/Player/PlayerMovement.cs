@@ -23,10 +23,14 @@ public class PlayerMovement : MonoBehaviour
 
     public MeshTrail meshTrail;
 
+    public SpellManager spellManager;
+
     [Header("Info Variables")]
     public Vector3 moveDir = Vector3.zero;
 
     public bool canDash;
+
+    public bool isCastingSpell;
 
     private float currSpeed;
 
@@ -34,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         canDash = true;
+
+        spellManager.playerRB = rb;
     }
 
     private void Update()
@@ -41,21 +47,29 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         float sidewaysInput = Input.GetAxisRaw("Horizontal");
 
-        transform.forward = moveDir;
+        // Rotation
+        if (spellManager.isCasting)
+        {
+            transform.forward = spellManager.GetFlatMousePos(transform.position) - transform.position;
+        }
+        else
+        {
+            transform.forward = moveDir;
+        }
 
+        // Movement
         bool isWalking = verticalInput != 0f || sidewaysInput != 0f;
 
         if (isWalking)
         {
             currSpeed += acceleration * Time.deltaTime;
 
-            //animator.Play("PlayerWalk");
             moveDir = (verticalInput * Vector3.forward + sidewaysInput * Vector3.right).normalized;
+            moveDir = Quaternion.AngleAxis(-45, Vector3.up) * moveDir;
         }
         else
         {
             currSpeed -= deceleration * Time.deltaTime;
-            //transform.forward = -Vector3.forward;
         }
 
         currSpeed = Mathf.Clamp(currSpeed, 0f, moveSpeed);

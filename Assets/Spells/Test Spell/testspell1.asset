@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: testspell1
   m_EditorClassIdentifier: 
   spellType: 0
-  spellName: 
-  baseCooldown: 0
-  manaCost: 0
-  spellSize: 1
-  uiSprite: {fileID: 0}
-  useDefaultSpawn: 0
-  spellObject: {fileID: 0}
+  spellName: Test Spell
+  baseCooldown: 2
+  baseManaCost: 5
+  baseShotSize: 1
+  baseShotSpeed: 80
+  baseSpellRange: 30
+  baseDamage: 10
+  uiSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  useDefaultSpawn: 1
+  spellObject: {fileID: 6297450126662110022, guid: 0ac911c6cddd16c45bb8b718e0380002, type: 3}
