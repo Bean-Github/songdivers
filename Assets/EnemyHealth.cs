@@ -1,11 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    public Slider slide;
     void Start()
     {
         
@@ -14,10 +11,6 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Slider.value 
-    }
-
-    public void TakeDamage(float damage) {
-
+        
     }
 }
