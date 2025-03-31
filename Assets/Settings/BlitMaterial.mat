@@ -125,7 +125,7 @@ Material:
     - _Intensity: 1
     - _Metallic: 0
     - _Noise_Scale: 307.18
-    - _Noise_Strength: 3
+    - _Noise_Strength: 0.39
     - _Noise_Strength_1: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
