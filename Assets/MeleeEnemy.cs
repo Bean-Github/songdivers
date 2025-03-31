@@ -18,6 +18,8 @@ public class MeleeEnemy : MonoBehaviour
     public float attackDur;
     public float attackCD;
     public float attackDamage;
+    private bool hasHit;
+    public Transform model;
     
     void Start()
     {
@@ -29,10 +31,7 @@ public class MeleeEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("Walking", agent.velocity.magnitude);
-        print(agent.velocity.magnitude);
-        agent.destination = player.transform.position;
-        
+        anim.SetFloat("Walking", agent.velocity.magnitude);        
         isAggro = (this.transform.position - player.transform.position).magnitude < aggroRange;
 
         if (isAggro) {
@@ -41,7 +40,8 @@ public class MeleeEnemy : MonoBehaviour
                 agent.destination = player.transform.position;                
             } else if (!isAttacking) {
                 if (Time.time > lastAttack + attackCD) {
-                    agent.destination = this.transform.position;
+                    agent.enabled = false;
+                    //agent.destination = this.transform.position;
                     anim.SetTrigger("Attack");
                     isAttacking = true;
                     lastAttack = Time.time;
@@ -49,18 +49,28 @@ public class MeleeEnemy : MonoBehaviour
             }
         }
         
+        //Return to walking
         if (Time.time > lastAttack + attackDur && isAttacking) {
+            agent.enabled = true;
+            Vector3 save = model.transform.position;
+            //model.transform.position = this.transform.position;
+            agent.Warp(save);
+            model.transform.position = save;
             anim.ResetTrigger("Attack");
             isAttacking = false;
+            hasHit = false;
         }
 
     }
 
-    // void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.gameObject.tag == "player" && isAttacking) {
-    //         player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
-    //     }
-    // }
+    void OnCollisionEnter(Collision collision)
+    {
+        print(collision.gameObject.tag + " " + isAttacking);
+        if (collision.gameObject.tag == "Player" && isAttacking && !hasHit) {
+            print("b");
+            hasHit = true;
+            player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+        }
+    }
 
 }
