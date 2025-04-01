@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
         float verticalInput = Input.GetAxisRaw("Vertical");
         float sidewaysInput = Input.GetAxisRaw("Horizontal");
 
@@ -81,11 +82,14 @@ public class PlayerMovement : MonoBehaviour
         // {
         //     transform.position += moveDir * currSpeed * Time.deltaTime;
         // }
-        ApplyGravity();
+        
         Vector3 dir = moveDir * currSpeed * Time.deltaTime;
-        move = new Vector3(dir.x, 0, dir.z);
+        move = new Vector3(dir.x, 0, dir.z) + velocity;
+        //rb.MovePosition(this.transform.position + move);
         cc.Move(move);
-        cc.Move(velocity);
+        
+        ApplyGravity();
+        // cc.Move(velocity);
 
 
         // Dashing
@@ -113,11 +117,14 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, layerMask);
         if (isGrounded) {
-            velocity = new Vector3(0f, -0.1f, 0f);
+            velocity = new Vector3(0f, -1f, 0f);
         } else {
+            if (velocity == new Vector3(0, -1f, 0f)) {
+                velocity = new Vector3(0f, 0f, 0f);
+            }
             velocity.y -= gravityForce * Time.deltaTime; // Apply gravity
         }
-        cc.Move(velocity * Time.deltaTime);
+        //cc.Move(velocity);
     }
 
     private IEnumerator DashMovement(Vector3 start, Vector3 target)  // s is start, t is target
@@ -137,5 +144,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-
+    
+    
 }

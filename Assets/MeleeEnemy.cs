@@ -1,30 +1,24 @@
 using UnityEngine;
 using UnityEngine.AI;
-public class MeleeEnemy : MonoBehaviour
+public class MeleeEnemy : Enemy
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private NavMeshAgent agent;
-    
     public float aggroRange = 10f;
     public Animator anim;
-    public bool isAggro;
     private Vector3 dest;
     private GameObject player;
 
     [Header("Attack")]
-    public float range;
-    public bool isAttacking;
-    private float lastAttack;
-    public float attackDur;
-    public float attackCD;
-    public float attackDamage;
     private bool hasHit;
     public Transform model;
+    public GameObject hurtBox;
     
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
+        hurtBox.GetComponent<HurtBox>().Damage = attackDamage;
         //agent.destination = this.transform.position;
     }
 
@@ -43,10 +37,18 @@ public class MeleeEnemy : MonoBehaviour
                     agent.enabled = false;
                     //agent.destination = this.transform.position;
                     anim.SetTrigger("Attack");
+                    // Transform hb = Instantiate(hurtBox, this.transform).transform;
+                    // hb.position = hb.position + transform.forward;
+                    // hb.GetComponent<HurtBox>().Set(1f, attackDamage);
+                    // hb.localScale = new Vector3 (1.5f, 2f, 1.5f);
                     isAttacking = true;
                     lastAttack = Time.time;
                 }
             }
+        }
+
+        if (isAttacking) {
+            transform.LookAt(player.transform.position);
         }
         
         //Return to walking
@@ -62,15 +64,4 @@ public class MeleeEnemy : MonoBehaviour
         }
 
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        print(collision.gameObject.tag + " " + isAttacking);
-        if (collision.gameObject.tag == "Player" && isAttacking && !hasHit) {
-            print("b");
-            hasHit = true;
-            player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
-        }
-    }
-
 }
