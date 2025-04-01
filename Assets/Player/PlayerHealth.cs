@@ -2,18 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : EntityHealth
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     public Slider slide;
-    public float maxHP;
-    public float currHP;
     public TextMeshProUGUI HPtext;
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,7 +15,14 @@ public class PlayerHealth : MonoBehaviour
         HPtext.text = currHP + "/" + maxHP;
     }
 
-    public void TakeDamage(float damage) {
-        currHP -= damage;
+    public override void TakeDamage(float damage) {
+        base.TakeDamage(damage);
     }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+    }
+
 }
+

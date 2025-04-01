@@ -27,7 +27,7 @@ public class SpellInstance : MonoBehaviour, IDamagePlayer
         }
     }
 
-    public virtual void OnDamagePlayer()
+    public virtual void OnDamagePlayer(Rigidbody playerRB)
     {
 
     }
