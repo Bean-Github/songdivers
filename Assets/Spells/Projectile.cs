@@ -51,6 +51,13 @@ public class Projectile : SpellInstance
         }
     }
 
+    public override void OnDamagePlayer(Rigidbody playerRB)
+    {
+        base.OnDamagePlayer(playerRB);
+
+        DestroyProjectile();
+    }
+
     public bool isDestroying;
 
     public virtual void DestroyProjectile()
