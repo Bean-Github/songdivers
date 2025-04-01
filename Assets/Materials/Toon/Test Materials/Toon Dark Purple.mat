@@ -57,7 +57,7 @@ Material:
     - _Texture: 0
     - _Use_Smoothness: 0
     m_Colors:
-    - _Base_Color: {r: 0.6226415, g: 0.32669598, b: 0, a: 0}
+    - _Base_Color: {r: 0.9308176, g: 0.34804326, b: 0, a: 0}
     - _Color: {r: 1, g: 0, b: 0, a: 0}
     - _Ramped_Diffuse_Values: {r: 1, g: 1, b: 1, a: 0}
     - _Threshold: {r: 0, g: 0, b: 0, a: 0}
