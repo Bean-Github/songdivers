@@ -6,7 +6,7 @@ public class HurtBox : MonoBehaviour, IDamagePlayer
     private float startTime;
     private float dur;
     private bool hasHit;
-    private float damage;
+    public float damage;
     void Start()
     {
         startTime = Time.time;
@@ -32,7 +32,7 @@ public class HurtBox : MonoBehaviour, IDamagePlayer
             return null;
         }
     }
-    public void OnDamagePlayer() {
+    public void OnDamagePlayer(Rigidbody rb) {
 
     }    
 }

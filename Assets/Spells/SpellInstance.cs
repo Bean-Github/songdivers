@@ -17,6 +17,10 @@ public class SpellInstance : MonoBehaviour, IDamagePlayer
         {
             return attachedSpell.GetDamage();
         }
+        set
+        {
+            attachedSpell.damage = value;
+        }
     }
 
     public Rigidbody IgnoreBody

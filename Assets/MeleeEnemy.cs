@@ -4,7 +4,6 @@ public class MeleeEnemy : Enemy
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private NavMeshAgent agent;
-    public float aggroRange = 10f;
     public Animator anim;
     private Vector3 dest;
     private GameObject player;

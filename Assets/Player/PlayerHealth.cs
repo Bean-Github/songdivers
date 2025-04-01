@@ -17,6 +17,8 @@ public class PlayerHealth : EntityHealth
 
     public override void TakeDamage(float damage) {
         base.TakeDamage(damage);
+
+        print("hello");
     }
 
     protected override void OnTriggerEnter(Collider other)

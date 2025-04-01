@@ -289,13 +289,14 @@ GameObject:
   m_Component:
   - component: {fileID: 25485657}
   - component: {fileID: 25485658}
+  - component: {fileID: 25485659}
   m_Layer: 7
   m_Name: Player Health Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &25485657
 Transform:
   m_ObjectHideFlags: 0
@@ -323,10 +324,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cadb3e0db7195469d71f362782ad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slide: {fileID: 1897888227}
   maxHP: 100
   currHP: 100
-  HPtext: {fileID: 0}
+  attachedRB: {fileID: 1666533580367148100}
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 81
+  slide: {fileID: 1897888227}
+  HPtext: {fileID: 1965425995}
+--- !u!65 &25485659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25485656}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3.0051057, z: 1}
+  m_Center: {x: 0, y: 1.0025531, z: 0}
 --- !u!1 &49713393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,13 +2639,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 100
-  anim: {fileID: 0}
   isAggro: 0
   range: 0
   isAttacking: 0
   attackDur: 0
   attackCD: 0
   attackDamage: 0
+  anim: {fileID: 0}
   model: {fileID: 0}
   hurtBox: {fileID: 0}
 --- !u!1 &1163268112
@@ -2681,8 +2707,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: breath
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8eed154f822fb6149826ab4ee7698d2a, type: 2}
-  m_sharedMaterial: {fileID: -6425757657750421816, guid: 8eed154f822fb6149826ab4ee7698d2a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3365,13 +3391,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 10
-  anim: {fileID: 0}
   isAggro: 0
   range: 0
   isAttacking: 0
   attackDur: 0
   attackCD: 0
   attackDamage: 0
+  anim: {fileID: 0}
   model: {fileID: 0}
   hurtBox: {fileID: 0}
 --- !u!195 &1505613146
@@ -4515,8 +4541,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100/100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8eed154f822fb6149826ab4ee7698d2a, type: 2}
-  m_sharedMaterial: {fileID: -6425757657750421816, guid: 8eed154f822fb6149826ab4ee7698d2a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5197,7 +5223,6 @@ GameObject:
   - component: {fileID: 1273306294849904587}
   - component: {fileID: 1666533580367148100}
   - component: {fileID: 1666533580367148102}
-  - component: {fileID: 1666533580367148103}
   - component: {fileID: 1666533580367148104}
   m_Layer: 0
   m_Name: Player
@@ -5296,22 +5321,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1666533580367148103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457151367636804592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cadb3e0db7195469d71f362782ad7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slide: {fileID: 1897888227}
-  maxHP: 100
-  currHP: 100
-  HPtext: {fileID: 1965425995}
 --- !u!136 &1666533580367148104
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5452,23 +5461,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -5476,7 +5485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -5494,6 +5503,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e122b80536b080846ae5823ee88d538c, type: 2}
     - target: {fileID: -1206874426333947015, guid: 9b5643ad3e725d74a91994a91201cd37, type: 3}
       propertyPath: m_Materials.Array.size
       value: 3

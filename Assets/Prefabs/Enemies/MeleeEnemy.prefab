@@ -204,15 +204,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aggroRange: 20
-  anim: {fileID: 906585233869190750}
   isAggro: 0
   range: 2
   isAttacking: 0
   attackDur: 1
   attackCD: 3
   attackDamage: 5
+  anim: {fileID: 906585233869190750}
   model: {fileID: 5063208098801595601}
-  hurtBox: {fileID: 6474539822112545840, guid: 3ec7da41dd6a26d49b15f4c94b5cea41, type: 3}
+  hurtBox: {fileID: 3903737347048747913}
 --- !u!54 &5380145101563860380
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -325,6 +325,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ec7da41dd6a26d49b15f4c94b5cea41, type: 3}
+--- !u!1 &3903737347048747913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6474539822112545840, guid: 3ec7da41dd6a26d49b15f4c94b5cea41, type: 3}
+  m_PrefabInstance: {fileID: 8067903810156605369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8311652896967590054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2066623917291613983, guid: 3ec7da41dd6a26d49b15f4c94b5cea41, type: 3}
