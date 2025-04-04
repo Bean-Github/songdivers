@@ -13,6 +13,7 @@ public class MeleeEnemy : Enemy
     public Transform model;
     public GameObject hurtBox;
     public bool attackMove;
+    private float saveSpeed;
     
     void Start()
     {
@@ -35,14 +36,12 @@ public class MeleeEnemy : Enemy
             } else if (!isAttacking) {
                 if (Time.time > lastAttack + attackCD) {
                     if (!attackMove) {
-                        agent.enabled = false;
+                        //agent.enabled = false;
+                        saveSpeed = agent.speed;
+                        agent.speed = 0;
                     }
-                    //agent.destination = this.transform.position;
                     anim.SetTrigger("Attack");
-                    // Transform hb = Instantiate(hurtBox, this.transform).transform;
-                    // hb.position = hb.position + transform.forward;
-                    // hb.GetComponent<HurtBox>().Set(1f, attackDamage);
-                    // hb.localScale = new Vector3 (1.5f, 2f, 1.5f);
+                    print("Attack");
                     isAttacking = true;
                     lastAttack = Time.time;
                 }
@@ -58,15 +57,16 @@ public class MeleeEnemy : Enemy
             }
             
         }
+
+        if (!isAttacking) {
+            model.transform.localPosition = new Vector3(0,0,0);
+        }
         
         //Return to walking
         if (Time.time > lastAttack + attackDur && isAttacking) {
-            agent.enabled = true;
-            Vector3 save = model.transform.position;
-            //model.transform.position = this.transform.position;
-            agent.Warp(save);
-            model.transform.position = save;
-            anim.ResetTrigger("Attack");
+            agent.speed = saveSpeed;
+            //model.transform.position = save;
+            //anim.ResetTrigger("Attack");
             isAttacking = false;
             hasHit = false;
         }

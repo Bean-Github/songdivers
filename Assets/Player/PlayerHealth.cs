@@ -7,6 +7,8 @@ public class PlayerHealth : EntityHealth
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Slider slide;
     public TextMeshProUGUI HPtext;
+    public DamageFlash df;
+    public Color damageFlashColor;
 
     // Update is called once per frame
     void Update()
@@ -17,6 +19,7 @@ public class PlayerHealth : EntityHealth
 
     public override void TakeDamage(float damage) {
         base.TakeDamage(damage);
+        df.TriggerMaterialChange(damageFlashColor);
 
         print("hello");
     }

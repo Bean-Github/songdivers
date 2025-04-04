@@ -50,22 +50,21 @@ public class BigEnemy : Enemy
         }
 
         if (Time.time < lastAttack + attackWindUp && isAttacking) {
-            agent.enabled = false;
+            agent.speed = 0;
         } else if (Time.time > lastAttack + attackEndLag && isAttacking) {
-            agent.enabled = false;
-        } else {
-            agent.enabled = true;
-        }
-
-        if (isAttacking) {
+            agent.speed = 0;
+        } else if (isAttacking) {
             agent.speed = dashSpeed;
             anim.SetFloat("Walking", 0);  
-            agent.destination = player.transform.position;            
+            agent.destination = player.transform.position;  
+        } else {
+            agent.speed = baseSpeed;
+            model.transform.localPosition = new Vector3(0,0,0); 
         }
+
         
         //Return to walking
         if (Time.time > lastAttack + attackDur && isAttacking) {
-            agent.enabled = true;
             Vector3 save = model.transform.position;
             //model.transform.position = this.transform.position;
             agent.Warp(save);
