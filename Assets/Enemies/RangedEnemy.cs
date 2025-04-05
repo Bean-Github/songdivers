@@ -9,16 +9,22 @@ public class RangedEnemy : Enemy
     private GameObject player;
 
     [Header("Attack")]
+    public float attackWindUp;
+    public float attackEndLag;
+    public float baseSpeed;
+    public float baseTurnSpeed;
+    public GameObject laser;
     public LayerMask sight;
-    public GameObject projectile;
-    private bool hasHit;
     public Transform model;
+    private bool laserActive;
+    private Quaternion laserRot;
     
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         //agent.destination = this.transform.position;
+        laserActive = false;
     }
 
     // Update is called once per frame
@@ -38,11 +44,11 @@ public class RangedEnemy : Enemy
                     print("a");
                     agent.destination = player.transform.position; 
                 //Attack if in range & ready               
-                } else if (los && Time.time > lastAttack + attackCD) {
-                    print("b");
+                } else if (los && Time.time > lastAttack + attackCD && !isAttacking) {
+                    Vector3 dir = player.transform.position + player.transform.up * 0.6f - this.transform.position;
+                    laserRot = Quaternion.LookRotation(dir);
                     agent.enabled = false;
                     transform.LookAt(player.transform);
-                    //agent.destination = this.transform.position;
                     anim.SetTrigger("Attack");
                     isAttacking = true;
                     lastAttack = Time.time;
@@ -53,7 +59,23 @@ public class RangedEnemy : Enemy
                 }
             }
         }
-        
+
+        if (Time.time < lastAttack + attackWindUp && isAttacking) {
+            agent.speed = 0;
+        } else if (Time.time > lastAttack + attackEndLag && isAttacking) {
+            agent.speed = 0;
+        } else if (isAttacking) {
+            if (!laserActive) {
+                GameObject dotHurtBox = Instantiate(laser, this.transform.position + transform.forward * 0.7f + transform.up * 0.6f, laserRot);
+                dotHurtBox.transform.GetChild(0).GetChild(0).GetComponent<DotHurtBox>().Damage = attackDamage;
+                laserActive = true;
+            }
+            anim.SetFloat("Walking", 0);  
+            agent.destination = player.transform.position;  
+        } else {
+            agent.speed = baseSpeed;
+            model.transform.localPosition = new Vector3(0,0,0); 
+        }
         //Return to walking
         if (Time.time > lastAttack + attackDur && isAttacking) {
             agent.enabled = true;
@@ -62,16 +84,7 @@ public class RangedEnemy : Enemy
             model.transform.position = save;
             anim.ResetTrigger("Attack");
             isAttacking = false;
-            hasHit = false;
-        }
-
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player" && isAttacking && !hasHit) {
-            hasHit = true;
-            player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+            laserActive = false;
         }
     }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8201580373294325404}
   - component: {fileID: 2692257224126498598}
   m_Layer: 10
-  m_Name: HurtBox
+  m_Name: InstanceHurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

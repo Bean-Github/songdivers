@@ -29,5 +29,11 @@ public class PlayerHealth : EntityHealth
         base.OnTriggerEnter(other);
     }
 
+    protected override void OnTriggerStay(Collider other)
+    {
+        print("hello2");
+        base.OnTriggerStay(other);
+    }
+
 }
 

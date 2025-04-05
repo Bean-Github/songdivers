@@ -13,7 +13,6 @@ public class BigEnemy : Enemy
     public float attackEndLag;
     public float baseSpeed;
     public float dashSpeed;
-    private bool hasHit;
     public Transform model;
     public GameObject hurtBox;
     
@@ -61,17 +60,14 @@ public class BigEnemy : Enemy
             agent.speed = baseSpeed;
             model.transform.localPosition = new Vector3(0,0,0); 
         }
-
         
         //Return to walking
         if (Time.time > lastAttack + attackDur && isAttacking) {
             Vector3 save = model.transform.position;
-            //model.transform.position = this.transform.position;
             agent.Warp(save);
             model.transform.position = save;
             anim.ResetTrigger("Attack");
             isAttacking = false;
-            hasHit = false;
         }
 
     }

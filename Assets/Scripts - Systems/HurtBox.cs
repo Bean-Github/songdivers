@@ -14,25 +14,25 @@ public class HurtBox : MonoBehaviour, IDamagePlayer
     // Update is called once per frame
     void Update()
     {
+
     }
 
     public float Damage {
-        get
-        {
-            return damage;
-        }
-        set
-        {
-            damage = value;
-        }
+        get {return damage;}
+        set {damage = value;}
+    }
+    public bool canDamage
+    {
+        get{return true;}
+    }
+    public DamageType type {
+        get {return DamageType.Instance;}
     }
     public Rigidbody IgnoreBody {
-        get
-        {
-            return null;
-        }
+        get {return null;}
     }
     public void OnDamagePlayer(Rigidbody rb) {
 
-    }    
+    }
+
 }
