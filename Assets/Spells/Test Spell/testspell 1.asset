@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcca05bc946b4e499b7b00603aaf349, type: 3}
+  m_Name: testspell 1
+  m_EditorClassIdentifier: 
+  spellType: 0
+  spellName: Test Spell
+  baseCooldown: 2
+  baseManaCost: 5
+  baseShotSize: 1
+  baseShotSpeed: 5
+  baseSpellRange: 30
+  baseDamage: 10
+  uiSprite: {fileID: 21300000, guid: d6bf1b4f409d9db45b995022da8f2296, type: 3}
+  useDefaultSpawn: 1
+  spellEffect: {fileID: 6297450126662110022, guid: 0ac911c6cddd16c45bb8b718e0380002, type: 3}

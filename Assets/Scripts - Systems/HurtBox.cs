@@ -31,7 +31,7 @@ public class HurtBox : MonoBehaviour, IDamagePlayer
     public Rigidbody IgnoreBody {
         get {return null;}
     }
-    public void OnDamagePlayer(Rigidbody rb) {
+    public void OnDamageEntity(EntityHealth entityHealth) {
 
     }
 

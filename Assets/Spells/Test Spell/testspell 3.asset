@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dcca05bc946b4e499b7b00603aaf349, type: 3}
-  m_Name: testspell1
+  m_Name: testspell 3
   m_EditorClassIdentifier: 
   spellType: 0
   spellName: Test Spell
   baseCooldown: 2
   baseManaCost: 5
   baseShotSize: 1
-  baseShotSpeed: 80
+  baseShotSpeed: 5
   baseSpellRange: 30
   baseDamage: 10
   uiSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   useDefaultSpawn: 1
-  spellObject: {fileID: 6297450126662110022, guid: 0ac911c6cddd16c45bb8b718e0380002, type: 3}
+  spellEffect: {fileID: 6297450126662110022, guid: 32bab81ca8ebbe24091c1bc9c3b56557, type: 3}

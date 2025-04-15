@@ -2,7 +2,7 @@ using UnityEngine;
 
 // Stores default (base) data
 [CreateAssetMenu(fileName = "NewSpell", menuName = "Custom/Spell")]
-public class SpellData : ScriptableObject
+public class SpellDataSO : ScriptableObject
 {
     public SpellType spellType;
 
@@ -22,10 +22,9 @@ public class SpellData : ScriptableObject
 
     public Sprite uiSprite;
 
-    public bool useDefaultSpawn;
+    public bool useDefaultSpawn = true;
 
-    public GameObject spellObject;
-
+    public GameObject spellEffect;
 
     public enum SpellType
     {

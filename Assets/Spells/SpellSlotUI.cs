@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellSlot : MonoBehaviour
+public class SpellSlotUI : MonoBehaviour
 {
     public Image image;
 
     public Image cooldownOverlay;
 
-    public Spell currentSpell;
+    public SpellInfo currentSpell;
 
     public Image highlightOverlay;
 
@@ -27,7 +27,7 @@ public class SpellSlot : MonoBehaviour
         }
     }
 
-    public void SetSpell(Spell spell)
+    public void SetSpell(SpellInfo spell)
     {
         image.sprite = spell.baseData.uiSprite;
 

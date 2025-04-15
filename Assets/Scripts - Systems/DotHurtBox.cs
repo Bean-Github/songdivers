@@ -4,7 +4,6 @@ public class DotHurtBox : MonoBehaviour, IDamagePlayer
 {
     private float startTime;
     public float dur;
-    public GameObject gameObject;
     private float lastTick;
     private bool hasHit;
     private float damage;
@@ -38,7 +37,7 @@ public class DotHurtBox : MonoBehaviour, IDamagePlayer
     public Rigidbody IgnoreBody {
         get {return null;}
     }
-    public void OnDamagePlayer(Rigidbody rb) {
+    public void OnDamageEntity(EntityHealth entityHealth) {
         lastTick = Time.time;
         print(lastTick);
     }

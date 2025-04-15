@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellCanvas : MonoBehaviour
+public class SpellCanvasUI : MonoBehaviour
 {
-    public SpellSlot[] spellSlots;
+    public SpellSlotUI[] spellSlots;
 
-    public SpellManager spellManager;
+    public Dictionary<SpellInfo, SpellSlotUI> spellSlotsDict;
+
+    public SpellCaster spellManager;
 
     public Slider manaSlider;
 
@@ -28,22 +31,37 @@ public class SpellCanvas : MonoBehaviour
         manaSlider.value = spellManager.currentMana;
     }
 
-    public void HighlightSelectedSpell(Spell s)
+    public void HighlightSelectedSpell(SpellInfo s)
     {
-        foreach (SpellSlot slot in spellSlots)
+        foreach (SpellSlotUI slot in spellSlots)
         {
             if (slot.currentSpell == s)
             {
                 slot.HighlightSpell();
             }
-            else
+        }
+    }
+
+    public void Dehighlight(SpellInfo s)
+    {
+        foreach (SpellSlotUI slot in spellSlots)
+        {
+            if (slot.currentSpell == s)
             {
                 slot.DisableHighlight();
             }
         }
     }
 
-    public void FillSlot(int i, Spell spell)
+    public void DehighlightAll()
+    {
+        foreach (SpellSlotUI slot in spellSlots)
+        {
+            slot.DisableHighlight();
+        }
+    }
+
+    public void FillSlot(int i, SpellInfo spell)
     {
         if (i < 0 || i > 3)
         {
@@ -53,9 +71,9 @@ public class SpellCanvas : MonoBehaviour
         spellSlots[i].SetSpell(spell);
     }
 
-    SpellSlot FindSlot(Spell s)
+    SpellSlotUI FindSlot(SpellInfo s)
     {
-        foreach (SpellSlot slot in spellSlots)
+        foreach (SpellSlotUI slot in spellSlots)
         {
             if (slot.currentSpell == s)
             {
@@ -65,3 +83,7 @@ public class SpellCanvas : MonoBehaviour
         return null;
     }
 }
+
+
+
+

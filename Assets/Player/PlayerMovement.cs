@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public Rigidbody rb;
     public MeshTrail meshTrail;
-    public SpellManager spellManager;
+    public SpellCaster spellManager;
 
     [Header("Info Variables")]
     public Vector3 moveDir = Vector3.zero;
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = true;
 
-        spellManager.playerRB = rb;
+        spellManager.attachedRB = rb;
         cc = this.GetComponent<CharacterController>();
     }
 
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         float sidewaysInput = Input.GetAxisRaw("Horizontal");
 
         // Rotation
-        if (spellManager.isCasting)
+        if (spellManager.IsCasting)
         {
             transform.forward = spellManager.GetFlatMousePos(transform.position) - transform.position;
         }

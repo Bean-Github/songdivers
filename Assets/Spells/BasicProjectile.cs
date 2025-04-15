@@ -3,7 +3,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class Projectile : SpellInstance
+// a basic version of a spell instance
+public class BasicProjectile : SpellInstance
 {
     public bool destroyOnCollision;
 
@@ -29,9 +30,9 @@ public class Projectile : SpellInstance
     {
         if (isDestroying) return;
 
-        rb.MovePosition(transform.position + transform.forward * attachedSpell.GetShotSpeed() * Time.deltaTime);
+        transform.position = (transform.position + transform.forward * spellCombiner.GetShotSpeed() * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, originalPos) > attachedSpell.GetSpellRange())
+        if (Vector3.Distance(transform.position, originalPos) > spellCombiner.GetSpellRange())
         {
             DestroyProjectile();
         }
@@ -51,9 +52,9 @@ public class Projectile : SpellInstance
         }
     }
 
-    public override void OnDamagePlayer(Rigidbody playerRB)
+    public override void OnDamageEntity(EntityHealth entityHealth)
     {
-        base.OnDamagePlayer(playerRB);
+        base.OnDamageEntity(entityHealth);
 
         DestroyProjectile();
     }
